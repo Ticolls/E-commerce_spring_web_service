@@ -1,21 +1,30 @@
 package com.ticolls.web_service.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ticolls.web_service.entities.Order;
 import com.ticolls.web_service.entities.User;
 
-public class UserResponseDTO {
+public class UserWithOrdersResponseDTO {
 
     private Long id;
     private String name;
     private String email;
     private String phone;
     private String password;
+    private List<OrderResponseDTO> orders = new ArrayList<>();
 
-    public UserResponseDTO(User user) {
+    public UserWithOrdersResponseDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.phone = user.getPhone();
         this.password = user.getPassword();
+        
+        for (Order order : user.getOrders()) {
+            orders.add(new OrderResponseDTO(order));
+        }
 
     }
 
@@ -56,8 +65,8 @@ public class UserResponseDTO {
         this.password = password;
     }
 
-    // public List<OrderResponseDTO> getOrders() {
-    //     return this.orders;
-    // }
+    public List<OrderResponseDTO> getOrders() {
+        return this.orders;
+    }
 
 }
