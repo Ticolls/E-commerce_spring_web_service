@@ -1,5 +1,4 @@
 package com.ticolls.web_service.entities;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tb_user")
-public class User implements Serializable {
+public class User {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

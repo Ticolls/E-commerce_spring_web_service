@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ticolls.web_service.entities.User;
+import com.ticolls.web_service.dtos.UserResponseDTO;
 import com.ticolls.web_service.services.UserService;
 
 @RestController
@@ -20,18 +20,18 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserResponseDTO>> findAll() {
 
-        List<User> users = service.findAll();
+        List<UserResponseDTO> users = service.findAll();
 
         return ResponseEntity.ok().body(users);
     }
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id) {
 
-        User user = service.findById(id);
+        UserResponseDTO user = service.findById(id);
 
         return ResponseEntity.ok().body(user);
 

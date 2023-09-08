@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ticolls.web_service.entities.Order;
+import com.ticolls.web_service.dtos.OrderResponseDTO;
 import com.ticolls.web_service.services.OrderService;
 
 @RestController
@@ -20,20 +20,19 @@ public class OrderController {
     private OrderService service;
 
     @GetMapping
-    public ResponseEntity<List<Order>> findAll() {
+    public ResponseEntity<List<OrderResponseDTO>> findAll() {
 
-        List<Order> Orders = service.findAll();
+        List<OrderResponseDTO> orders = service.findAll();
 
-        return ResponseEntity.ok().body(Orders);
+        return ResponseEntity.ok().body(orders);
     }
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Order> findById(@PathVariable Long id) {
+    public ResponseEntity<OrderResponseDTO> findById(@PathVariable Long id) {
 
-        Order order = service.findById(id);
+        OrderResponseDTO order = service.findById(id);
 
         return ResponseEntity.ok().body(order);
-
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ticolls.web_service.entities.Category;
+import com.ticolls.web_service.dtos.CategoryResponseDTO;
 import com.ticolls.web_service.services.CategoryService;
 
 @RestController
@@ -20,18 +20,18 @@ public class CategoryController {
     private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
+    public ResponseEntity<List<CategoryResponseDTO>> findAll() {
 
-        List<Category> categorys = service.findAll();
+        List<CategoryResponseDTO> categorys = service.findAll();
 
         return ResponseEntity.ok().body(categorys);
     }
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id) {
+    public ResponseEntity<CategoryResponseDTO> findById(@PathVariable Long id) {
 
-        Category category = service.findById(id);
+        CategoryResponseDTO category = service.findById(id);
 
         return ResponseEntity.ok().body(category);
 
