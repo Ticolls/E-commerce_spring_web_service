@@ -47,5 +47,19 @@ public class UserService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public UserResponseDTO update(Long id, UserRequestDTO updateUser) {
+        
+        User user = repository.getReferenceById(id);
+
+        user.setName(updateUser.getName());
+        user.setEmail(updateUser.getEmail());
+        user.setPhone(updateUser.getPhone());
+        
+        User updatedUser = repository.save(user);
+
+        return new UserResponseDTO(updatedUser);
+    }
+
 } 
  
