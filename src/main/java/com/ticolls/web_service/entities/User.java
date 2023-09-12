@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ticolls.web_service.dtos.UserRequestDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +39,13 @@ public class User {
         this.phone = phone;
         this.password = password;
     }
+
+    public User(UserRequestDTO newUserDTO) {
+        this.name = newUserDTO.getName();
+        this.email = newUserDTO.getEmail();
+        this.phone = newUserDTO.getPhone();
+        this.password = newUserDTO.getPassword();
+    } 
     
 
     public Long getId() {
