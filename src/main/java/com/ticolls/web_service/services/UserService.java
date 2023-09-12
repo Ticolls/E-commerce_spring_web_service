@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ticolls.web_service.dtos.UserResponseDTO;
+import com.ticolls.web_service.dtos.UserWithOrdersResponseDTO;
 import com.ticolls.web_service.entities.User;
 import com.ticolls.web_service.repositories.UserRepository;
 
@@ -29,10 +30,10 @@ public class UserService {
         return usersDTO;
     }
 
-    public UserResponseDTO findById(Long id) {
+    public UserWithOrdersResponseDTO findById(Long id) {
         Optional<User> optionalUser = repository.findById(id);
 
-        return new UserResponseDTO(optionalUser.get());
+        return new UserWithOrdersResponseDTO(optionalUser.get());
     }
 } 
  

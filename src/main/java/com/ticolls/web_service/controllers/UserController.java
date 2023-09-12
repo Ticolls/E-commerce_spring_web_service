@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ticolls.web_service.dtos.UserResponseDTO;
+import com.ticolls.web_service.dtos.UserWithOrdersResponseDTO;
 import com.ticolls.web_service.services.UserService;
 
 @RestController
@@ -29,9 +30,9 @@ public class UserController {
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<UserWithOrdersResponseDTO> findById(@PathVariable Long id) {
 
-        UserResponseDTO user = service.findById(id);
+        UserWithOrdersResponseDTO user = service.findById(id);
 
         return ResponseEntity.ok().body(user);
 
