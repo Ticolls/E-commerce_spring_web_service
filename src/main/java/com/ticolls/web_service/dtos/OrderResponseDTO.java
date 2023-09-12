@@ -15,6 +15,7 @@ public class OrderResponseDTO {
     private Instant moment;
     private OrderStatus orderStatus;
     private UserResponseDTO user;
+    private Double total;
     private Set<OrderItemDTO> items = new HashSet<>();
 
     public OrderResponseDTO(Order order) {
@@ -22,10 +23,12 @@ public class OrderResponseDTO {
         this.moment = order.getMoment();
         this.orderStatus = order.getOrderStatus();
         this.user = new UserResponseDTO(order.getClient());
+        this.total = order.getTotal();
         
         for (OrderItem orderItem : order.getItems()) {
             this.items.add(new OrderItemDTO(orderItem));
         }
+
     }
 
 
@@ -44,9 +47,14 @@ public class OrderResponseDTO {
     public UserResponseDTO getUser() {
         return this.user;
     }
+    
+    public Double getTotal() {
+        return this.total;
+    }
 
     public Set<OrderItemDTO> getItems() {
         return this.items;
     }
+
 
 }
